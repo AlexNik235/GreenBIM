@@ -1,0 +1,268 @@
+﻿<Window x:Class="GreenBIM.UpdateMaterial.View.SelectWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GreenBIM.UpdateMaterial.View"
+             xmlns:vm="clr-namespace:GreenBIM.UpdateMaterial.ViewModels"
+             mc:Ignorable="d" Name="Window" ResizeMode="NoResize"
+             d:DataContext="{d:DesignInstance vm:MainContext}"
+             Title="Диспетчер работы с материалами"
+             Height="420" Width="800">
+    <Window.Resources>
+        <Style TargetType="Border" x:Key="StandartBorder">
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style TargetType="Button" x:Key="StandartButton">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="StandartTextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style TargetType="RadioButton" x:Key="StandartRadioButtn">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Text="Диспетчер проектов" Margin="143,5,133,37"
+            Style="{StaticResource StandartTextBlock}" Height="18" Width="124"/>
+
+        <TextBlock 
+            Text="Диспетчер материалов" Margin="116,6,126,33"
+            Style="{StaticResource StandartTextBlock}" Grid.Column="1" Height="21" Width="152"/>
+
+        <TextBlock 
+            Text="Выбор целевого проект"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="-5,22,336,16"
+            TextWrapping="Wrap" 
+            Width="69"
+            TextAlignment="Center"
+            FontSize="8" Height="22" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock 
+            Text="Название файла"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="143,35,124,1"
+            TextWrapping="Wrap" 
+            Width="133"
+            TextAlignment="Center"
+            FontSize="12" 
+            Height="24"
+            />
+
+        <TextBlock 
+            Text="Выбор ресурса"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="29,24,313,20"
+            TextWrapping="Wrap" 
+            Width="58"
+            TextAlignment="Center"
+            FontSize="8" 
+            Height="16" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock 
+            Text="Название материала"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="133,35,109,7"
+            TextWrapping="Wrap" 
+            Width="152"
+            TextAlignment="Center"
+            FontSize="12" Height="18" 
+            Grid.Column="1"/>
+
+        <TextBlock 
+            Text="Выбор материала"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="7,26,335,7"
+            TextWrapping="Wrap" 
+            Width="52"
+            TextAlignment="Center"
+            FontSize="8" Height="27" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+
+
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Style="{StaticResource StandartBorder}">
+            <ListBox 
+            x:Name="MaterialWin"
+            ItemsSource="{Binding Path=MaterialModelList}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox 
+                        Content="{Binding materialName}"
+                        IsChecked="{Binding IsChoosen}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+
+
+        <Border Style="{StaticResource StandartBorder}"
+                Grid.Column="0"
+                Grid.Row="1">
+            <ListBox ItemsSource="{Binding Path=DocumentList}" 
+                     HorizontalContentAlignment="Left" 
+                     >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <UniformGrid Columns="2" >
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Stretch">
+                                <CheckBox  
+                                    IsChecked="{Binding ChangeMaterial}"
+                                    Margin="0,0,10,0"
+                                    ToolTip="Выбор Элементов, в которые будут скопированны материалы"
+                                    ToolTipService.Placement="Mouse"/>
+                                <CheckBox 
+                                    Content="{Binding Path=DocName}" 
+                                    IsChecked="{Binding IsMaterialFile}" 
+                                    x:Name="radioButton1" 
+                                    ToolTip="Выбор файла из которого будут скопированы, проверены или удалены материалы"
+                                    ToolTipService.Placement="Mouse"
+                                    Click="updateMaterialList_Click"/>
+                            </StackPanel>
+                        </UniformGrid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+
+        <Button Content="Принять"
+                Command="{Binding FirstWinApplyCommand}"
+                CommandParameter="{Binding ElementName=Window}"
+                Style="{StaticResource StandartButton}"
+                Background="Blue"
+                Foreground="White"
+                Grid.Column="0"
+                Grid.Row="2" Margin="18,72,302,23"/>
+
+        <Button Content="Отмена"
+                Command="{Binding CancelCommand}"
+                CommandParameter="{Binding ElementName=Window}"
+                Style="{StaticResource StandartButton}"
+                Background="red"
+                Foreground="White"
+                Grid.Column="1"
+                Grid.Row="2" Margin="277,72,27,23" Width="Auto"/>
+        <StackPanel 
+            Grid.Row="2"
+            Margin="159,5,0,91"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            ToolTip="Отображение файлов проекта или семейств"
+            ToolTipService.Placement ="Mouse">
+            <RadioButton 
+            Content="Только проект"
+            Click="UpdateDocList_Click"
+            Margin="5"/>
+            <RadioButton        
+            Content="Только семейства"
+            IsChecked="{Binding userSettings.IsFamilyDocument}" 
+            Click="UpdateDocList_Click"
+             Margin="5"/>
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="160,34,-79,54" 
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal"
+            ToolTip="Выбор режима работы"
+            ToolTipService.Placement="Mouse">
+            <RadioButton 
+                Content="Обновить материалы в семействах" 
+                IsChecked="{Binding Path=userSettings.UpdateMaterial}"
+                Style="{StaticResource StandartRadioButtn}"/>
+            <RadioButton 
+                Content="Копировать материалы" 
+                IsChecked="{Binding Path=userSettings.CopyMaterial}"
+                Style="{StaticResource StandartRadioButtn}"/>
+            <RadioButton 
+                Content="Удалить материалы" 
+                IsChecked="{Binding userSettings.DelitMaterial}"
+                Style="{StaticResource StandartRadioButtn}" Margin="5,5,5,-31"/>
+        </StackPanel>
+
+        <TextBlock 
+            Text="Выбор режима работы"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="13,36,245,60"
+            TextWrapping="Wrap" 
+            Width="142"
+            TextAlignment="Center"
+            FontSize="12" 
+            Height="24" Grid.Row="2"/>
+
+        <TextBlock 
+            Text="Показывать файлы:"
+            Style="{StaticResource StandartTextBlock}" 
+            Margin="11,9,265,87"
+            TextWrapping="Wrap" 
+            Width="124"
+            TextAlignment="Center"
+            FontSize="12" 
+            Height="24" Grid.Row="2"/>
+
+        <StackPanel
+            Grid.Row="2" Margin="5,6,274,84" Grid.Column="1"
+            >
+            <CheckBox 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Выбрать все"
+            IsChecked="{Binding userSettings.SelectAll}" 
+            Click="CheckBox_Click"
+            Margin="5"
+            />
+        </StackPanel>
+    </Grid>
+</Window>

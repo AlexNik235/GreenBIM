@@ -1,0 +1,68 @@
+{
+  "Buttons": [
+    {
+      "buttonName": "ConnectingConnectors",
+      "buttonText": "Соединение \n коннекторов",
+      "direction": "GreenBIM.ConnectingConnectors",
+      "image": "GreenBIM.Resources.gbscripts32.png",
+      "panelName": "BIM",
+      "tabName": "GB:BIM"
+    },
+    {
+      "buttonName": "GetInputElement",
+      "buttonText": "Проверка \n вложеных",
+      "direction": "GreenBIM.GetInputElement",
+      "image": "GreenBIM.Resources.gbscripts32.png",
+      "panelName": "BIM",
+      "tabName": "GB:BIM"
+    },
+    {
+      "buttonName": "RenameViews",
+      "buttonText": "Корректировка \n названия",
+      "direction": "GreenBIM.RenameViews",
+      "image": "GreenBIM.Resources.gbscripts32.png",
+      "panelName": "Проверки",
+      "tabName": "GB:КЖ"
+    },
+    {
+      "buttonName": "FamilySymbolTest",
+      "buttonText": "Тест типоразмеров \n семейств",
+      "direction": "GreenBIM.FamilySymbolTestPr.FamilySymbolTest",
+      "image": "GreenBIM.Resources.gbscripts32.png",
+      "panelName": "BIM",
+      "tabName": "GB:BIM"
+    },
+    {
+      "buttonName": "SetFilters",
+      "buttonText": "Установить \n фильтры",
+      "direction": "GreenBIM.SetFilter.SetFilter",
+      "image": "GreenBIM.Resources.FilterIcon32.png",
+      "panelName": "Графика",
+      "tabName": "GB:КЖ"
+    },
+    {
+      "buttonName": "ElementAnchor",
+      "buttonText": "Закрепить \n элементы",
+      "direction": "GreenBIM.ElementAnchor.ElementAnchor",
+      "image": "GreenBIM.Resources.ElementAnchor32.png",
+      "panelName": "Общее",
+      "tabName": "GB:КЖ"
+    },
+    {
+      "buttonName": "UpdateRebarForm",
+      "buttonText": "Исправить \n формы",
+      "direction": "GreenBIM.UpdateRebarForm.UpdateRebarFormCommand",
+      "image": "GreenBIM.Resources.UpdateRebarForm32.png",
+      "panelName": "Общее",
+      "tabName": "GB:КЖ"
+    },
+    {
+      "buttonName": "UpdateMaterial",
+      "buttonText": "Работа с \n материалами",
+      "direction": "GreenBIM.UpdateMaterial.UpdateMaterialCommand",
+      "image": "GreenBIM.Resources.UpdateMaterial32.png",
+      "panelName": "Общее",
+      "tabName": "GB:КЖ"
+    }
+  ]
+}

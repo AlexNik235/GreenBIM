@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">    
+    <Name>GreenBIM</Name>
+    <Assembly>
+      GreenBIM.dll
+    </Assembly>
+    <ClientId>e6e39a5e-22b2-4f66-8bc9-f2a34aef2375</ClientId>
+    <FullClassName>GreenBIM.App</FullClassName>
+    <VendorId>GreenBIM</VendorId>
+    <VendorDescription>addinsample.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

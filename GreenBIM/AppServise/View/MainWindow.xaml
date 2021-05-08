@@ -1,0 +1,40 @@
+﻿<Window x:Class="GreenBIM.AppServise.View.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GreenBIM.AppServise.View"
+             xmlns:vm="clr-namespace:GreenBIM.AppServise.ViewModel"
+             mc:Ignorable="d" Name="Window" ResizeMode="NoResize"
+             d:DataContext="{d:DesignInstance vm:MainContext}"
+             Height="450" Width="450">
+
+
+    <Grid x:Name="UserSettings" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="2" Content="Выберите необходимые панели" 
+                HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+
+        <ListBox ItemsSource="{Binding tabModelList}" Grid.Row="1" Grid.Column="1" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding TabName}" IsChecked="{Binding IsCheck}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Content="Принять" Grid.Row="2" Height="25" Width="60" Margin="21,7,270,7"
+                Command="{Binding ApplyCommand}" CommandParameter="{Binding ElementName=Window}" Grid.Column="1"/>
+        <Button Content="Отменить" Grid.ColumnSpan="2" Grid.Row="2" Height="25" Width="60" Margin="315,5,15,5"
+                Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=Window}"/>
+    </Grid>
+</Window>
